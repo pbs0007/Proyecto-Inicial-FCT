@@ -10,12 +10,12 @@ function App() {
   return (
     <>
       <div>
-        <h1>
-          Gestión de inventario
-        </h1>
+        <HeaderComponent></HeaderComponent>
+        <SidebarComponent></SidebarComponent>
+        <div className="principal"></div>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
