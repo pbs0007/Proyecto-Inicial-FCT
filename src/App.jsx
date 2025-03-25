@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import "./App.css";
-import HeaderComponent from "./components/HeaderComponent";
-import SidebarComponent from "./components/SidebarComponent";
+import ControlPanelPage from "./pages/ControlPanelPage";
+import { Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
 
 const supabase = createClient(
   import.meta.env.VITE_PROJECT_URL,
@@ -11,13 +12,10 @@ const supabase = createClient(
 console.log(supabase);
 function App() {
   return (
-    <>
-      <div>
-        <HeaderComponent></HeaderComponent>
-        <SidebarComponent></SidebarComponent>
-        <div className="principal"></div>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/control-panel" element={<ControlPanelPage />} />
+    </Routes>
   );
 }
 
