@@ -1,9 +1,9 @@
 import HeaderComponent from "../components/HeaderComponent";
 import SidebarComponent from "../components/SidebarComponent";
 
-function ControlPanelPage() {
+function InventoryPage() {
   return (
-    <div id="control-panel">
+    <div id="inventory-page">
       <HeaderComponent></HeaderComponent>
       <SidebarComponent></SidebarComponent>
       <div className="principal"></div>
@@ -11,4 +11,4 @@ function ControlPanelPage() {
   );
 }
 
-export default ControlPanelPage;
+export default InventoryPage;
