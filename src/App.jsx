@@ -11,31 +11,31 @@ import Movememets from "./pages/MovementsPage";
 import { SnackbarProvider } from "notistack";
 
 function App() {
-  // const [session, setSession] = useState(null);
+  const [session, setSession] = useState(null);
 
-  // useEffect(() => {
-  //   // Obtener la sesión actual al cargar la app
-  //   supabase.auth.getSession().then(({ data: { session } }) => {
-  //     setSession(session);
-  //   });
+  useEffect(() => {
+    // Obtener la sesión actual al cargar la app
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
 
-  //   // Escuchar cambios en el estado de sesión (login, logout, etc.)
-  //   const {
-  //     data: { subscription },
-  //   } = supabase.auth.onAuthStateChange((_event, session) => {
-  //     setSession(session);
-  //   });
+    // Escuchar cambios en el estado de sesión (login, logout, etc.)
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
 
-  //   //Limpia el listener al cerrar app
-  //   return () => {
-  //     subscription.unsubscribe();
-  //   };
-  // }, []);
+    //Limpia el listener al cerrar app
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
-  // //Si no hay sesión activa, redirige a la página de inicio de sesión(componente Auth)
-  // if (!session) {
-  //   return <Auth></Auth>;
-  // }
+  //Si no hay sesión activa, redirige a la página de inicio de sesión(componente Auth)
+  if (!session) {
+    return <Auth></Auth>;
+  }
 
   // Hay sesión activa, muestra contenido
   return (
