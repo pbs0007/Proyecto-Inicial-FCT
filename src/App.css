@@ -30,6 +30,8 @@
     --highlight: #E76F51;
 }
 
-body {
+.principal {
     background-color: var(--highlight);
+    margin-left: 250px;
+    height: 100vh;
 }
