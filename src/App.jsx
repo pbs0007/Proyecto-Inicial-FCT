@@ -4,6 +4,12 @@ import HeaderComponent from "./components/HeaderComponent";
 import SidebarComponent from "./components/SidebarComponent";
 import { supabase } from './supabase/supabaseClient'
 import Auth from './components/Auth'
+import { Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import ControlPanelPage from "./pages/ControlPanelPage";
+import InventoryPage from "./pages/InventoryPage";
+import ProductForm from "./pages/ProductFormPage";
+import Movememets from "./pages/MovementsPage";
 
 
 function App() {
@@ -35,13 +41,13 @@ function App() {
 
   //Hay sesión activa, muestra contenido
   return (
-    <>
-      <div>
-        <HeaderComponent></HeaderComponent>
-        <SidebarComponent></SidebarComponent>
-        <div className="principal"></div>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/control-panel" element={<ControlPanelPage />} />
+      <Route path="/inventory" element={<InventoryPage />} />
+      <Route path="/producto-form" element={<ProductForm />} />
+      <Route path="/movements" element={<Movememets />} />
+    </Routes>
   );
 }
 
