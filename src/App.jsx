@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import HeaderComponent from "./components/HeaderComponent";
-import SidebarComponent from "./components/SidebarComponent";
-import { supabase } from './supabase/supabaseClient'
-import Auth from './components/Auth'
-import { Route, Routes, Navigate } from "react-router-dom";
+import { supabase } from "./supabase/supabaseClient";
+import Auth from "./components/Auth";
+import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import ControlPanelPage from "./pages/ControlPanelPage";
 import InventoryPage from "./pages/InventoryPage";
 import ProductForm from "./pages/ProductFormPage";
-import Movements from "./pages/MovementsPage";
-
+import Movememets from "./pages/MovementsPage";
+import { SnackbarProvider } from "notistack";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -34,20 +32,22 @@ function App() {
     };
   }, []);
 
-  return (
-    <Routes>
-      {/*Ruta de login accesible siempre*/ }
-      <Route path="/login-page" element={<LoginPage />} />
-      {/*Rutas protegidas por sesión*/}
-      <Route path="/control-panel" element={session ?<ControlPanelPage />: <Navigate to="/login-page" />} />
-      <Route path="/inventory" element={session ? <InventoryPage /> : <Navigate to="/login-page" />} />
-      <Route path="/producto-form" element={session ? <ProductForm /> :<Navigate to="/login-page" />} />
-      <Route path="/movements" element={session ?<Movements />: <Navigate to="/login-page" />} />
+  //Si no hay sesión activa, redirige a la página de inicio de sesión(componente Auth)
+  if (!session) {
+    return <Auth></Auth>;
+  }
 
-      {/*Redirección por defecto a la página de login*/}
-      <Route path="/" element={<Navigate to="/login-page" />} />
-      
-    </Routes>
+  // Hay sesión activa, muestra contenido
+  return (
+    <SnackbarProvider maxSnack={5}>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/control-panel" element={<ControlPanelPage />} />
+        <Route path="/inventory" element={<InventoryPage />} />
+        <Route path="/producto-form" element={<ProductForm />} />
+        <Route path="/movements" element={<Movememets />} />
+      </Routes>
+    </SnackbarProvider>
   );
 }
 
