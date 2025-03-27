@@ -1,0 +1,92 @@
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  align-items: center;
+  background-color: var(--primary);
+  font-family: sans-serif;
+  padding-top: 0px;
+}   
+
+.auth-main-title {
+    background-color: var(--secondary);
+    color: var(--text-dark-bg);
+    width: 100%;
+    text-align: center ;
+    font-size: 40px;
+    padding: 30px 0; 
+    font-weight: bold;
+}
+
+.auth-box {
+    width: 500px;
+    padding: 40px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgb(0, 0, 0);
+    background-color: white;
+    margin-top: 200px;
+}
+
+.auth-title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.auth-subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form label {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.auth-input {
+    padding: 14px;
+    font-size: 16px;
+    margin-top: 5px;
+    border: 1px solid #333;
+    border-radius: 2px;
+}
+
+.auth-button {
+    margin-top: 18px;
+    padding: 14px;
+    font-size: 16px;
+    background-color: var(--secondary);
+    color: white; 
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.auth-button:hover {
+    background-color: #3c729b;
+}
+
+.auth-error {
+    color: red;
+    margin-top: 10px;
+}
+
+.auth-forgot {
+    font-size: 15px;
+    margin-top: 10px;
+    color: #333;
+}
+
+.auth-forgot a {
+    font-weight: bold;
+    color: black ;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { supabase } from "../supabase/supabaseClient";
-
+import "./Auth.css";
 
 
 //Formulario de inicio de sesión
@@ -33,14 +33,14 @@ function Auth() {
 
     return (
         <div className="auth-container">
+            <h1 className="auth-main-title">
+                Gestión de inventario
+            </h1>
             <div className="auth-box">
-                <h1 className="auth-title">
-                    Gestión de inventario
-                </h1>
-                <h2 className="auth-subtitle">
-                    Inicio de sesión
+                <h2 className="auth-title">
+                    Iniciar sesión
                 </h2>
-                <p className="auth-text">
+                <p className="auth-subtitle">
                     Formulario de inicio de sesión
                 </p>
 
@@ -79,7 +79,7 @@ function Auth() {
 
 
                 <p className="auth-forgot">
-                    ¿Ha olvidado su contraseña?
+                    ¿Ha olvidado su contraseña? {""}
                     <a href="#">
                         Recuperar contraseña
                     </a>
