@@ -1,4 +1,3 @@
-import { use } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabase/supabaseClient";
@@ -9,7 +8,9 @@ function LoginPage() {
 
   //Escucha cambios de sesión (login, logout, etc.)
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session) {
         navigate("/control-panel");
       }
@@ -19,7 +20,6 @@ function LoginPage() {
     return () => {
       subscription.unsubscribe();
     };
-    
   }, []);
 
   return (

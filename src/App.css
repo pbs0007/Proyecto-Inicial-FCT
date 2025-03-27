@@ -14,9 +14,10 @@
     /* Modo Claro */
     --primary: #2A4D69;
     --secondary: #4B86B4;
-    --background: #F9F9F9;
+    --background: #d5d5d5;
+    --component-background: #ffffff;
     --text-primary: #333333;
-    --text-dark-bg: #F1F1F1;
+    --text-dark-bg: #ffffff;
     --highlight: #F4A261;
 }
 
@@ -25,13 +26,15 @@
     --primary: #1B2A41;
     --secondary: #30475E;
     --background: #121212;
+    --component-background: #323232;
     --text-primary: #E0E0E0;
     --text-dark-bg: #F1F1F1;
     --highlight: #E76F51;
 }
 
 .principal {
-    background-color: var(--highlight);
+    background-color: var(--background);
     margin-left: 250px;
+    padding-top: 50px;
     height: 100vh;
 }
