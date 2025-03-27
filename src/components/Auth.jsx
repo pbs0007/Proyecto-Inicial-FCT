@@ -28,8 +28,6 @@ function Auth() {
         //Hay error, muestra mensaje
         if (error) {
             setError(error.message)
-        } else {
-            //sesión se actualiza automaticamente en el componente App por listener
         }
     }
 
