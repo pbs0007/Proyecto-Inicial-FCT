@@ -86,7 +86,9 @@
     color: #333;
 }
 
-.auth-forgot a {
+.auth-forgot button {
     font-weight: bold;
     color: black ;
+    cursor: pointer;
+    text-decoration: underline;
 }
