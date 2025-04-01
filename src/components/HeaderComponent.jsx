@@ -1,5 +1,6 @@
 import DateTimeComponent from "./DateTimeComponent";
 import "./HeaderComponent.css";
+import LogoutButton from "./LogoutButton";
 
 export default function HeaderComponent() {
   return (
@@ -9,6 +10,9 @@ export default function HeaderComponent() {
       </div>
       <div className="date-time-component">
         <DateTimeComponent></DateTimeComponent>
+      </div>
+      <div className="logout-component">
+        <LogoutButton></LogoutButton>
       </div>
     </div>
   );
