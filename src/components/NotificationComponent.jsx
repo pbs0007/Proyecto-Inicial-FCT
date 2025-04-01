@@ -17,7 +17,7 @@ function NotificationComponent() {
         anchorOrigin: { vertical: "bottom", horizontal: "right" },
         style: {
           backgroundColor: "var(--component-background)",
-          color: "var(--text)",
+          color: "var(--text-primary)",
           fontSize: "15px",
         },
       });
@@ -38,7 +38,7 @@ function NotificationComponent() {
 
     fetchLowStockProducts();
 
-    // Suscripción en tiempo real a cambios en la tabla "products"
+    // Obtención de datos en tiempo real de cambios en la tabla "products"
     const channel = supabase
       .channel("realtime:products")
       .on(
@@ -83,7 +83,7 @@ function NotificationComponent() {
             ),
             style: {
               backgroundColor: "var(--component-background)",
-              color: "var(--text)",
+              color: "var(--text-primary)",
               fontSize: "15px",
             },
           }
