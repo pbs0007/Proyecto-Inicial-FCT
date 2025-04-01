@@ -8,6 +8,7 @@
     list-style: none;
     font: inherit;
     outline: none;
+    transition: background 0.3s, color 0.3s;
 }
 
 :root {

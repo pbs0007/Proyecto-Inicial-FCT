@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import HeaderComponent from "../components/HeaderComponent";
 import SidebarComponent from "../components/SidebarComponent";
 import NotificationComponent from "../components/NotificationComponent";
+import ThemeToggleComponent from "../components/ThemeToggleComponent";
 
 function ControlPanelPage() {
   const [hasShownNotification, setHasShownNotification] = useState(false);
