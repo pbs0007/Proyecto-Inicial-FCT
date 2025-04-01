@@ -9,6 +9,7 @@ import InventoryPage from "./pages/InventoryPage";
 import ProductForm from "./pages/ProductFormPage";
 import Movememets from "./pages/MovementsPage";
 import { SnackbarProvider } from "notistack";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -42,6 +43,7 @@ function App() {
     <SnackbarProvider maxSnack={5}>
       <Routes>
         <Route path="/" element={<LoginPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/control-panel" element={<ControlPanelPage />} />
         <Route path="/inventory" element={<InventoryPage />} />
         <Route path="/producto-form" element={<ProductForm />} />

@@ -31,6 +31,22 @@ function Auth() {
         }
     }
 
+    /**Envía correo al usuario con enlace para reestablecer contraseña. */
+    const handlePasswordReset = async () => {
+        if (!email) {
+            setError("Por favor, introduzca su correo electrónico.")
+            return;
+        }
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: `${window.location.origin}/reset-password` //redirecciona al usuario a la página de reseteo de contraseña 
+        });
+        if (error) {
+            setError("Error al enviar el correo de recuperación" + error.message)
+        } else {
+            alert("Se ha enviado un correo electrónico con un enlace para restablecer su contraseña. Verifique su bandeja de entrada.");
+        }
+    };
+
     return (
         <div className="auth-container">
             <h1 className="auth-main-title">
@@ -80,9 +96,9 @@ function Auth() {
 
                 <p className="auth-forgot">
                     ¿Ha olvidado su contraseña? {""}
-                    <a href="#">
+                    <button onClick={handlePasswordReset} className='auth-link'>
                         Recuperar contraseña
-                    </a>
+                    </button>
                 </p>
 
             </div>
