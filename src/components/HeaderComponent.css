@@ -1,9 +1,13 @@
 .header {
-    background-color: var(--background);
+    background-color: var(--component-background);
     margin: 0;
     display: flex;
     align-items: center;
     height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 
     .logo {
         background-color: var(--secondary);

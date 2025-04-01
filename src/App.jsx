@@ -9,6 +9,7 @@ import InventoryPage from "./pages/InventoryPage";
 import ProductForm from "./pages/ProductFormPage";
 import Movememets from "./pages/MovementsPage";
 import { SnackbarProvider } from "notistack";
+import NotificationComponent from "./components/NotificationComponent";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
   // Hay sesión activa, muestra contenido
   return (
     <SnackbarProvider maxSnack={5}>
+      <NotificationComponent></NotificationComponent>
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
