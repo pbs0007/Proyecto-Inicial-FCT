@@ -1,0 +1,60 @@
+.table{
+  width: 60%;
+  border-collapse: collapse;
+  background: white;
+  border:1px;
+  font-family: sans-serif;  
+  margin-left: 20px;
+}
+
+.tr{
+  border-bottom: 1px solid black;
+}
+
+.th{
+  text-align: left;
+  font-weight: bold;
+  font-size: larger;
+  background-color: white;
+  padding:10px;
+}
+
+.td{
+  text-align: left;
+  padding:10px;
+}
+
+.checkbox{
+ margin-right:10px;
+}
+
+.td-button{
+  padding: 10px;
+  text-align: center;
+  width: 20%;
+ }
+
+.button{
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+  border: 1px solid black;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.button-A{
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.button-S{
+  font-weight: bold;
+}
+
+.span{
+  margin-right: 20px;
+}
