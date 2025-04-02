@@ -12,7 +12,7 @@ function LogoutButton() {
     if (error) {
       console.error("Error al cerrar sesión:", error.message);
     } else {
-      navigate("/login");
+      navigate("/");
     }
   };
 
