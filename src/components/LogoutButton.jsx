@@ -1,9 +1,9 @@
 import { supabase } from "../supabase/supabaseClient";
 import { useNavigate } from "react-router-dom";
 import "./LogoutButton.css";
+import { LogOut } from "lucide-react";
 
 //Botón que cierra la sesión del usuario y redirige al login
-
 function LogoutButton() {
   const navigate = useNavigate();
 
@@ -18,7 +18,8 @@ function LogoutButton() {
 
   return (
     <button onClick={handleLogout} className="logout-button">
-      Cerrar sesión
+      <LogOut className="logout-icon" />
+      <span className="logout-text">Cerrar sesión</span>
     </button>
   );
 }

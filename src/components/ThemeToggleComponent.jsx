@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./ThemeToggleComponent.css";
+import { Moon, Sun } from "lucide-react";
 
 const ThemeToggleComponent = () => {
   // Estado para almacenar el tema seleccionado
@@ -33,8 +34,8 @@ const ThemeToggleComponent = () => {
         checked={darkMode}
       />
       <label className="dark-mode-label" htmlFor="darkmode-toggle">
-        <h1>🌞</h1>
-        <h1>🌙</h1>
+        <Sun className="sun-icon" />
+        <Moon className="moon-icon" />
       </label>
     </div>
   );
