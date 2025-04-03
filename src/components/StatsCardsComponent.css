@@ -1,0 +1,55 @@
+.stats-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 10px;
+    margin: 15px;
+    width: calc(100% - 30px);
+}
+
+.stats-card {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+.icons {
+    background-color: var(--secondary);
+    color: var(--text-dark-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 10px;
+}
+
+.icon {
+    height: 75%;
+    width: 75%;
+    object-fit: contain;
+}
+
+.stats {
+    background-color: var(--component-background);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    flex: 2;
+    width: 100%;
+}
+
+.stats-lenght {
+    font-size: 45px;
+    margin: 0;
+}
+
+.data-stats {
+    font-size: 18px;
+    margin: 0;
+}

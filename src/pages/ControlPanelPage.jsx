@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import HeaderComponent from "../components/HeaderComponent";
 import SidebarComponent from "../components/SidebarComponent";
 import NotificationComponent from "../components/NotificationComponent";
-import ThemeToggleComponent from "../components/ThemeToggleComponent";
+import StatsCardsComponent from "../components/StatsCardsComponent";
 
 function ControlPanelPage() {
   const [hasShownNotification, setHasShownNotification] = useState(false);
@@ -22,7 +22,9 @@ function ControlPanelPage() {
     <div id="control-panel">
       {hasShownNotification && <NotificationComponent />} <HeaderComponent />
       <SidebarComponent />
-      <div className="principal"></div>
+      <div className="principal">
+        <StatsCardsComponent></StatsCardsComponent>
+      </div>
     </div>
   );
 }
