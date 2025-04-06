@@ -26,6 +26,21 @@ function DataTable(){
     fetchProducts()
   }, [])
 
+  const handleDelete = async (id) => {
+    const confirm = window.confirm('¿Seguro que deseas eliminar este producto?')
+
+    if (!confirm) return
+
+    const { error } = await supabase.from('products').delete().eq('id', id)
+
+    if (error) {
+      console.error('Error al eliminar:', error.message)
+      alert('Hubo un error al eliminar el producto.')
+    } else {
+      setProducts(products.filter((producto) => producto.id !== id))
+      alert('Producto eliminado correctamente.')
+    }
+  }
 
   return (
     <div>
@@ -49,7 +64,7 @@ function DataTable(){
               <td className="td">{row.stock}</td>
               <td className="td-button">
                 <button onClick={() => alert(`Modificar ${row.id}`)} className="button">Modificar</button>
-                <button onClick={() => alert(`Eliminar ${row.id}`)} className="button">Eliminar</button>
+                <button onClick={(evt) => handleDelete(row.id)} className="button">Eliminar</button>
               </td>
             </tr>
           ))}
