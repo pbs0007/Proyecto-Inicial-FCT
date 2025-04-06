@@ -19,6 +19,7 @@ function DataTable(){
 
   return (
     <div>
+      <h1 className="TodosProductos">Todos los Productos</h1>
       <table className="table">
 
         <thead>
