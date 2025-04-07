@@ -7,8 +7,10 @@ function ProductFormPage() {
     <div className="product-form">
       <HeaderComponent></HeaderComponent>
       <SidebarComponent></SidebarComponent>
-      <div className="principal"></div>
+      <div className="principal">
       <FormComponent></FormComponent>
+      </div>
+      
     </div>
   );
 }

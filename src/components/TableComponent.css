@@ -1,6 +1,6 @@
 .table{  
   border-collapse: collapse;
-  background:var(--background);
+  background:var(--component-background);
   border:1px;
   font-family: sans-serif;  
   padding: 10px;   
@@ -16,7 +16,7 @@
   text-align: left;
   font-weight: bold;
   font-size: larger;
-  background-color:var(--background);
+  background-color:var(--component-background);
   padding:10px;
 }
 
