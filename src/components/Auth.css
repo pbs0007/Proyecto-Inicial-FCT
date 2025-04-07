@@ -1,12 +1,15 @@
 .auth-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   min-height: 100vh;
   align-items: center;
   background-color: var(--primary);
   font-family: sans-serif;
   padding-top: 0px;
+  overflow: auto;
+  padding: 0 16px;
+  box-sizing: border-box;
 }   
 
 .auth-main-title {
@@ -15,11 +18,12 @@
     text-align: center ;
     font-size: 50px;
     font-weight: bold;
-    margin-top: 200px;
+    margin-top: 0;
 }
 
 .auth-box {
-    width: 500px;
+    width: 100%;
+    max-width: 420px;
     padding: 40px;
     border: 1px solid #ddd;
     border-radius: 10px;
