@@ -5,13 +5,14 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
+      background-color:var(--component-background) ;
      
     }
 
    .input {
       padding: 8px;
       border-radius: 5px;
-      border: 1px solid var(--primary);
+      border: 2px solid var(--primary);
       background-color: var(--component-background);
       width: 100%;
     }
@@ -19,7 +20,7 @@
    .textarea{
       padding: 8px;
       border-radius: 5px;
-      border: 1px solid var(--primary);
+      border: 2px solid var(--primary);
       background-color: var(--component-background);
       width: 100%;
       resize: vertical;
@@ -27,21 +28,21 @@
     }
 
    .select {
-      padding: '8px';
-      border-radius: '5px';
-      border: '1px solid #ccc';
-      width: '100%';
+      padding: 8px;
+      border-radius: 5px;
+      border: 2px solid var(--primary);
+      width: 100%;
       background-color: var(--component-background);
     }
 
    .button {
       background-color: var(--primary);
       color: var(--text-dark-bg);
-      padding: '10px';
-      border: 'none';
-      border-radius: '5px';
-      cursor: 'pointer';
-      font-size: '16px';
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
     }
 
     .label{

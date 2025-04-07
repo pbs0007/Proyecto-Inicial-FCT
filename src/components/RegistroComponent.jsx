@@ -18,6 +18,6 @@ function RegistroComponent(){
      </div>
     );
   };
-  
 
-export default RegistroComponent;
+ 
+ export default RegistroComponent;
