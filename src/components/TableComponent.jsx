@@ -73,9 +73,16 @@ function DataTable(){
 
         <tfoot className="foot">
          <tr className="tr">
+            <td>
             <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} className="button-A"> Anterior</button>
-            <span className="span">Página {currentPage} de {Math.ceil(products.length / pageSize)}</span>
-            <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === Math.ceil(products.length / pageSize)} className="button-S">Siguiente</button>
+            </td>
+
+            <td>
+              <span className="span">Página {currentPage} de {Math.ceil(products.length / pageSize)}</span>
+            </td>
+            <td>
+              <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === Math.ceil(products.length / pageSize)} className="button-S">Siguiente</button>
+            </td>
          </tr>
         </tfoot>
 

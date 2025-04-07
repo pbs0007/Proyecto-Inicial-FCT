@@ -1,4 +1,4 @@
-import "./RegistroComponente.css";
+//import "./RegistroComponente.css";
 import { useNavigate } from 'react-router-dom';
 
 function RegistroComponent(){
@@ -6,7 +6,7 @@ function RegistroComponent(){
     const navigate = useNavigate();
 
     const handleRedirect = () => {
-      navigate("/producto-form")
+      navigate("/product-form")
     };
   
     return (
