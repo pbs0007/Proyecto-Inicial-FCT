@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../supabase/supabaseClient";
 import { Boxes, List, Users } from "lucide-react";
 import "./StatsCardsComponent.css";
+import { Await } from "react-router-dom";
 
 const StatsCardsComponent = () => {
   const [userCount, setUserCount] = useState(0);
@@ -12,11 +13,9 @@ const StatsCardsComponent = () => {
     const fetchCounts = async () => {
       try {
         // Total de usuarios registrados
-        // const { data: userData, error: userError } =
-        //   await supabase.auth.api.listUsers();
-        // if (userError) throw userError;
-
-        // const userCount = userData.length;
+        const { count: userCount } = await supabase
+          .from("users")
+          .select("id", { count: "exact" });
 
         // Total de categorias registradas
         const { data: productData } = await supabase

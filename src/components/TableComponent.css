@@ -1,41 +1,42 @@
-.table{  
+.table {
   border-collapse: collapse;
-  background:var(--component-background);
-  border:1px;
-  font-family: sans-serif;  
-  padding: 10px;   
+  background: var(--component-background);
+  color: var(--text-primary);
+  border: 1px;
+  font-family: sans-serif;
+  padding: 10px;
   width: 80%;
   margin: 50px auto;
 }
 
-.tr{
+.tr {
   border-bottom: 1px solid var(--primary);
- }
+}
 
-.th{
+.th {
   text-align: left;
   font-weight: bold;
   font-size: larger;
-  background-color:var(--component-background);
-  padding:10px;
+  background-color: var(--component-background);
+  padding: 10px;
 }
 
-.td{
+.td {
   text-align: left;
-  padding:10px;
+  padding: 10px;
 }
 
-.checkbox{
- margin-right:10px;
+.checkbox {
+  margin-right: 10px;
 }
 
-.td-button{
+.td-button {
   padding: 10px;
   text-align: center;
   width: 20%;
- }
+}
 
-.button{
+.button {
   background-color: var(--background);
   border-radius: 5px;
   color: var(--text-primary);
@@ -47,23 +48,23 @@
   margin-right: 10px;
 }
 
-.button-A{
+.button-A {
   margin-right: 20px;
   font-weight: bold;
 }
 
-.button-S{
+.button-S {
   font-weight: bold;
 }
 
-.span{
+.span {
   margin-right: 20px;
 }
 
-.TodosProductos{
-  font-size:xx-large;
-  font-family:Verdana;
+.TodosProductos {
+  font-size: xx-large;
+  font-family: Verdana;
   font-style: bold;
-  margin-left:220px;
-     
+  margin-left: 220px;
+
 }
