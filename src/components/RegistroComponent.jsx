@@ -1,4 +1,4 @@
-//import "./RegistroComponente.css";
+import "./RegistroComponent.css";
 import { useNavigate } from 'react-router-dom';
 
 function RegistroComponent(){

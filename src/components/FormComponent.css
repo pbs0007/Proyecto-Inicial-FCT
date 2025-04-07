@@ -11,16 +11,16 @@
    .input {
       padding: 8px;
       border-radius: 5px;
-      border: 1px solid #ccc;
-      background-color: var(--background);
+      border: 1px solid var(--primary);
+      background-color: var(--component-background);
       width: 100%;
     }
 
    .textarea{
       padding: 8px;
       border-radius: 5px;
-      border: 1px solid #ccc;
-      background-color: var(--background);
+      border: 1px solid var(--primary);
+      background-color: var(--component-background);
       width: 100%;
       resize: vertical;
       min-Height: 80px;
@@ -31,7 +31,7 @@
       border-radius: '5px';
       border: '1px solid #ccc';
       width: '100%';
-      background-color: var(--background);
+      background-color: var(--component-background);
     }
 
    .button {
