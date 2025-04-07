@@ -36,7 +36,7 @@
 .principal {
     background-color: var(--background);
     margin-left: 250px;
-    padding: 50px;
+    padding-top: 50px;
     height: 100%;
     min-height: 100vh;
 }
