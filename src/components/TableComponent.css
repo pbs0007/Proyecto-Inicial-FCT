@@ -1,21 +1,22 @@
-.table{
-  width: 60%;
+.table{  
   border-collapse: collapse;
-  background: white;
+  background:var(--background);
   border:1px;
   font-family: sans-serif;  
-  margin-left: 20px;
+  padding: 10px;   
+  width: 80%;
+  margin: 50px auto;
 }
 
 .tr{
-  border-bottom: 1px solid black;
-}
+  border-bottom: 1px solid var(--primary);
+ }
 
 .th{
   text-align: left;
   font-weight: bold;
   font-size: larger;
-  background-color: white;
+  background-color:var(--background);
   padding:10px;
 }
 
@@ -35,10 +36,10 @@
  }
 
 .button{
-  background-color: white;
+  background-color: var(--background);
   border-radius: 5px;
-  color: black;
-  border: 1px solid black;
+  color: var(--text-primary);
+  border: 1px solid var(--primary);
   padding: 5px 10px;
   cursor: pointer;
   font-weight: bold;
@@ -57,4 +58,12 @@
 
 .span{
   margin-right: 20px;
+}
+
+.TodosProductos{
+  font-size:xx-large;
+  font-family:Verdana;
+  font-style: bold;
+  margin-left:220px;
+     
 }
