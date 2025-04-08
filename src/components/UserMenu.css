@@ -8,13 +8,14 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    color: var(--text-primary);
   }
   
   .menu-dropdown {
     position: absolute;
     top: 40px;
     right: 0;
-    background-color: white;
+    background-color: var(--component-background);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -30,6 +31,7 @@
   .menu-dropdown p {
     margin: 0 80px 0px 80px;
     font-weight: 500;
+    color: var(--text-primary);
   }
   
   .logout-wrapper {
@@ -42,8 +44,7 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background-color: #f1f1f1;
-    border: 1px solid rgb(232, 229, 229);
+    background-color: var(--background); 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,7 +53,8 @@
   
   .user-avatar {
     cursor: pointer;
-    color: #333; 
+    color: var(--text-primary);
+    transition: color 0.3s ease; 
   }
   
   .user-greeting {
