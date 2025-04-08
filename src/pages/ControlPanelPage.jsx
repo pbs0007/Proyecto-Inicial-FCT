@@ -3,8 +3,7 @@ import HeaderComponent from "../components/HeaderComponent";
 import SidebarComponent from "../components/SidebarComponent";
 import NotificationComponent from "../components/NotificationComponent";
 import StatsCardsComponent from "../components/StatsCardsComponent";
-import RegistroComponent from "../components/RegistroComponent";
-import { AlignLeft, MoveLeft } from "lucide-react";
+import RegisterProductComponent from "../components/RegisterProductComponent";
 
 function ControlPanelPage() {
   const [hasShownNotification, setHasShownNotification] = useState(false);
@@ -26,13 +25,11 @@ function ControlPanelPage() {
       <SidebarComponent />
       <div className="principal">
         <StatsCardsComponent></StatsCardsComponent>
-        <div style={{display:"flex",justifyContent: "flex-end",}}>
-          <div style={{width:"20%",height:"20%"}}>
-            <RegistroComponent></RegistroComponent>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <div style={{ width: "20%", height: "20%" }}>
+            <RegisterProductComponent></RegisterProductComponent>
           </div>
         </div>
-        
-        
       </div>
     </div>
   );

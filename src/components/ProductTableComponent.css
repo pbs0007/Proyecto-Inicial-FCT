@@ -1,0 +1,48 @@
+.product-table {
+    width: 95%;
+    margin: auto;
+}
+
+.table-tittle {
+    font-size: 27px;
+    color: var(--text-primary);
+    padding: 10px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.th,
+.td {
+    color: var(--text-primary);
+    background: var(--component-background);
+    border: 1px solid var(--background);
+    padding: 12px;
+    text-align: left;
+}
+
+.td input[type="checkbox"] {
+    display: block;
+    margin: auto;
+}
+
+.btns {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    background-color: var(--secondary);
+    color: var(--text-dark-bg);
+    padding: 8px 12px;
+    margin-right: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--primary);
+}
