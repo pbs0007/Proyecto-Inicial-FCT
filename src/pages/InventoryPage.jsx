@@ -23,9 +23,11 @@ function InventoryPage() {
       <br></br>      
       <br></br>      
        <TableComponent></TableComponent>
-       <RegistroComponent></RegistroComponent>
+       <div style={{height:"6%"}}>
+        <RegistroComponent></RegistroComponent> 
+       </div>                       
       </div>
-      </div>
+    </div>
     
   );
 }

@@ -2,6 +2,7 @@
     background-color: var(--component-background);
     padding: 10px;   
     width: 80%;
+    height: 80%;
     margin: 50px auto; 
 }
 

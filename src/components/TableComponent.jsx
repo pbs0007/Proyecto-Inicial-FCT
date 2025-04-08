@@ -14,7 +14,7 @@ function DataTable(){
     const fetchProducts = async () => {
       const { data, error } = await supabase
         .from('products')
-        .select("id, name, description, price, stock") // Recordar que no he añadido la categoria del producto porque no esta en el html abajo
+        .select("id, name, description, category, price, stock") // Recordar que no he añadido la categoria del producto porque no esta en el html abajo
 
       if (error) {
         console.error('Error al traer productos:', error)
@@ -51,8 +51,9 @@ function DataTable(){
           <tr className="tr">
             <th className="th">Nombre</th>
             <th className="th">Descripción</th>
+            <th className="th">Categoría</th>
             <th className="th">Precio</th>
-            <th className="th">Stock</th>            
+            <th className="th">Unidades</th>            
           </tr>
         </thead>
 
@@ -61,6 +62,7 @@ function DataTable(){
             <tr key={row.id} className="tr">
               <td className="td"><input type="checkbox" className="checkbox"/>{row.name}</td>
               <td className="td">{row.description}</td>
+              <td className="td">{row.category}</td>
               <td className="td">{row.price}</td>
               <td className="td">{row.stock}</td>
               <td className="td-button">

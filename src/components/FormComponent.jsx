@@ -37,8 +37,9 @@ function FormComponent(){
           </label>
     
           <label className="label">
+          Selecciona una categoría
             <select className="select" name="categoria" value={formulario.categoria} onChange={handleChange}>
-              <option value="">Selecciona una categoría</option> 
+              <option value="">Ninguna</option> 
               {categorias.map((cat, index) => (
                 <option key={index} value={cat}>{cat}</option>
               ))}
