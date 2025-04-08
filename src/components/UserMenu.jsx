@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { LogOut, User } from "lucide-react";
 import { supabase } from "../supabase/supabaseClient";
 import LogoutButton from "./LogoutButton";
@@ -8,6 +8,8 @@ import "./UserMenu.css";
 //Lógica de despliegue y cierre del menú desplegable.
 
 function UserMenu() {
+    const menuRef=useRef(null); 
+
     const [isOpen, setIsOpen] = useState(false);
 
     const [username, setUsername] = useState("");
@@ -25,6 +27,21 @@ function UserMenu() {
         getUserInfo();
     }, []);
 
+    // Cierra menú desplegable al hacer clic fuera del elemento
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     const toggleMenu = () => setIsOpen(!isOpen);
 
     const handleLogout = async () => {
@@ -33,7 +50,7 @@ function UserMenu() {
     };
 
     return (
-        <div className="user-menu">
+        <div className="user-menu" ref={menuRef}>
             <div className="user-icon" onClick={toggleMenu}>
                 <User size={28} />
             </div>
