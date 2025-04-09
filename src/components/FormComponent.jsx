@@ -13,7 +13,7 @@ function FormComponent(){
   })
     
              
-      const categorias = ["Aperitivos","Agua y refrescos","Fruta y verduras","Lacteos","Huevos y mantequilla","Aceite, especias y salsas","Marisco y pescado","Carne","Congelados"];
+      const categorias = ["Categoria 1","Categoria 2","Categoria 3","Categoria 4"];
     
       const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,33 +23,7 @@ function FormComponent(){
       const handleSubmit = async (e) => {e.preventDefault()         
       ;
 
-      const product = {
-        name: formulario.nombre,
-        description: formulario.descripcion,
-        category: formulario.categoria,
-        stock: parseInt(formulario.cantidad),
-        pr: parseFloat(formulario.precio)
-      };
-
-      console.log('Producto a insertar:', product);
-  
-      const { data, error } = await supabase
-        .from('products')
-        .insert([product]);
-  
-      if (error) {
-        console.error('Error al guardar producto:', error);
-        alert('Hubo un error al registrar el producto');
-      } else {
-        alert('Producto registrado con éxito');
-        setFormulario({
-          nombre: "",
-          descripcion: "",
-          categoria: "",
-          cantidad: "",
-          precio: "",
-        });
-      }
+      
     };
     
       return (
