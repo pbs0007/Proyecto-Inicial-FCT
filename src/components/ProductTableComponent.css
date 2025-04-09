@@ -12,6 +12,9 @@
 .table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
+    overflow-x: auto;
+    display: block;
 }
 
 .th,

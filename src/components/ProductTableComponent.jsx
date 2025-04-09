@@ -1,25 +1,33 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase/supabaseClient";
+import CategoryFilter from "./CategoryFilterComponent";
 import "./ProductTableComponent.css";
 
 function ProductTableComponent() {
   const [products, setProducts] = useState([]);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data, error } = await supabase
-        .from("products")
-        .select("id, name, description, category, price, stock");
+    fetchProducts(categoriaSeleccionada);
+  }, [categoriaSeleccionada]);
 
-      if (error) {
-        console.log("Error al obtener los productos", error);
-      } else {
-        setProducts(data);
-      }
-    };
+  const fetchProducts = async (categoria) => {
+    let query = supabase
+      .from("products")
+      .select("id, name, description, category, price, stock");
 
-    fetchProducts();
-  }, []);
+    if (categoria) {
+      query = query.eq("category", categoria);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      console.log("Error al obtener los productos", error);
+    } else {
+      setProducts(data);
+    }
+  };
 
   const handleDelete = async (id) => {
     const confirm = window.confirm("¿Seguro que desea eliminar este producto?");
@@ -38,7 +46,9 @@ function ProductTableComponent() {
 
   return (
     <div className="product-table">
+      <CategoryFilter onCategoriaSeleccionada={setCategoriaSeleccionada} />
       <h1 className="table-tittle">Productos disponibles</h1>
+
       <table className="table">
         <thead>
           <tr className="tr">
@@ -58,11 +68,11 @@ function ProductTableComponent() {
               <td className="td">
                 <input type="checkbox" className="checkbox" />
               </td>
-              <td className="td">{row.name} </td>
-              <td className="td">{row.description} </td>
-              <td className="td">{row.category} </td>
-              <td className="td">{row.price} </td>
-              <td className="td">{row.stock} </td>
+              <td className="td">{row.name}</td>
+              <td className="td">{row.description}</td>
+              <td className="td">{row.category}</td>
+              <td className="td">{row.price}</td>
+              <td className="td">{row.stock}</td>
               <td className="td">
                 <div className="btns">
                   <button
@@ -71,10 +81,7 @@ function ProductTableComponent() {
                   >
                     Modificar
                   </button>
-                  <button
-                    className="btn"
-                    onClick={(evt) => handleDelete(row.id)}
-                  >
+                  <button className="btn" onClick={() => handleDelete(row.id)}>
                     Eliminar
                   </button>
                 </div>

@@ -25,11 +25,8 @@ function ControlPanelPage() {
       <SidebarComponent />
       <div className="principal">
         <StatsCardsComponent></StatsCardsComponent>
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <div style={{ width: "20%", height: "20%" }}>
-            <RegisterProductComponent></RegisterProductComponent>
-          </div>
-        </div>
+
+        <RegisterProductComponent className="register-product"></RegisterProductComponent>
       </div>
     </div>
   );

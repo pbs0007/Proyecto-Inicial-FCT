@@ -1,5 +1,5 @@
-import "./RegisterProductComponent.css";
 import { useNavigate } from "react-router-dom";
+import "./RegisterProductComponent.css";
 
 function RegisterProductComponent() {
   const navigate = useNavigate();
