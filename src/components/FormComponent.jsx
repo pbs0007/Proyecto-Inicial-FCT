@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { supabase } from "../supabase/supabaseClient";
 import "./FormComponent.css";
 
 
@@ -19,8 +20,37 @@ function FormComponent(){
         setFormulario({ ...formulario, [name]: value });
         };
     
-      const handleSubmit = (e) => {e.preventDefault()         
+      const handleSubmit = async (e) => {e.preventDefault()         
+      ;
+
+      const product = {
+        name: formulario.nombre,
+        description: formulario.descripcion,
+        category: formulario.categoria,
+        stock: parseInt(formulario.cantidad),
+        price: parseFloat(formulario.precio)
       };
+
+      console.log('Producto a insertar:', product);
+  
+      const { data, error } = await supabase
+        .from('products')
+        .insert([product]);
+  
+      if (error) {
+        console.error('Error al guardar producto:', error);
+        alert('Hubo un error al registrar el producto');
+      } else {
+        alert('Producto registrado con éxito');
+        setFormulario({
+          nombre: "",
+          descripcion: "",
+          categoria: "",
+          cantidad: "",
+          precio: "",
+        });
+      }
+    };
     
       return (
         <form onSubmit={handleSubmit} className="form">
