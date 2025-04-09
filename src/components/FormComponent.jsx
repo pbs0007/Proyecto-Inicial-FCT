@@ -13,7 +13,7 @@ function FormComponent(){
   })
     
              
-      const categorias = ["Categoría1", "Categoría2","Categoría3","Categoría4"];
+      const categorias = ["Aperitivos","Agua y refrescos","Fruta y verduras","Lacteos","Huevos y mantequilla","Aceite, especias y salsas","Marisco y pescado","Carne","Congelados"];
     
       const handleChange = (e) => {
         const { name, value } = e.target;
@@ -28,7 +28,7 @@ function FormComponent(){
         description: formulario.descripcion,
         category: formulario.categoria,
         stock: parseInt(formulario.cantidad),
-        price: parseFloat(formulario.precio)
+        pr: parseFloat(formulario.precio)
       };
 
       console.log('Producto a insertar:', product);
