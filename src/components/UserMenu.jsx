@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { LogOut, User, Pencil } from "lucide-react";
+import { User, Pencil } from "lucide-react";
 import { supabase } from "../supabase/supabaseClient";
 import LogoutButton from "./LogoutButton";
 import "./UserMenu.css";
@@ -13,11 +13,11 @@ function UserMenu() {
     const menuRef = useRef(null);
 
     const [isOpen, setIsOpen] = useState(false);
-
     const [username, setUsername] = useState("");
-
+    const [userId, setUserId] = useState(null); //id del usuario actual
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [profileImage, setProfileImage] = useState(null);
+
 
     // Obtener el usuario actual 
     useEffect(() => {
@@ -26,13 +26,16 @@ function UserMenu() {
             if (data?.user?.email) {
                 const name = data.user.email.split("@")[0];
                 setUsername(name);
+                setUserId(data.user.id); //guarda user id para usarlo en path
             }
         };
 
         getUserInfo();
+
         //recupera img del sessionStorage si existe
         const savedImage = sessionStorage.getItem("profileImage");
-        if (savedImage) {
+        const savedPath = sessionStorage.getItem("profileImagePath");
+        if (savedImage && savedPath) {
             setProfileImage(savedImage);
         }
     }, []);
@@ -59,30 +62,63 @@ function UserMenu() {
         window.location.href = "/"; // Redirige al login
     };
 
-    // Cuando el usuario selecciona una imagen
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            if (profileImage) {
-                URL.revokeObjectURL(profileImage);
-            }
-            const imageUrl = URL.createObjectURL(file);
-            setProfileImage(imageUrl);
-
-            //Guarda img en sessionStorage
-            sessionStorage.setItem("profileImage", imageUrl);
+    // Cuando el usuario selecciona una imagen guarda en Supabase Storage
+    const handleImageChange = async (e) => {
+        //borrar img anterior al subir una nueva
+        const previousPath = sessionStorage.getItem("profileImagePath");
+        if (previousPath) {
+            await supabase.storage.from("avatars").remove([previousPath]);
         }
+
+        const file = e.target.files[0];
+        if (!file || !userId) return;
+
+        const fileExt = file.name.split(".").pop();
+        const uniqueFileName = `avatar-${Date.now()}.${fileExt}`; // nombre único para la imagen
+        const filePath = `${userId}/${uniqueFileName}`;
+
+        const { error: uploadError } = await supabase.storage
+            .from("avatars")
+            .upload(filePath, file, {
+                cacheControl: "3600",
+                upsert: true,
+                contentType: file.type, //detecta tipo MIME (png, jpg, etc)
+            });
+
+        if (uploadError) {
+            console.error("Error al subir imagen:", uploadError.message);
+            return;
+        }
+
+        const { data: publicUrlData } = supabase.storage
+            .from("avatars")
+            .getPublicUrl(filePath);
+
+        const imageUrl = publicUrlData.publicUrl;
+        setProfileImage(imageUrl);
+        sessionStorage.setItem("profileImage", imageUrl);
+        sessionStorage.setItem("profileImagePath", filePath);
+
     };
 
-    // Eliminar imagen (solo resetea visualmente, no borra de Supabase aún)
-    const handleRemoveImage = () => {
-        if (profileImage) {
-            URL.revokeObjectURL(profileImage);
-        }
-        setProfileImage(null);
+    // Eliminar imagen 
+    const handleRemoveImage = async () => {
+        if (!userId) return;
 
-        //elimina del sessionStorage
+        const imagePath = sessionStorage.getItem("profileImagePath");
+        if (!imagePath) return;
+
+        const { error } = await supabase.storage
+            .from("avatars")
+            .remove([imagePath]);
+
+        if (error) {
+            console.error("Error al eliminar la imagen de Supabase:", error.message);
+        }
+
+        setProfileImage(null);
         sessionStorage.removeItem("profileImage");
+        sessionStorage.removeItem("profileImagePath");
     };
 
 
@@ -129,10 +165,7 @@ function UserMenu() {
             )
             }
         </div>
-
-
-
     );
-}
+};
 
 export default UserMenu;
