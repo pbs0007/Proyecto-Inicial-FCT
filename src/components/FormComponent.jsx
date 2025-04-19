@@ -1,24 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from "../supabase/supabaseClient";
 import "./FormComponent.css";
 
 
 function FormComponent(){
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [formulario,setFormulario]= useState({
     nombre: "",
     descripcion: "",
     categoria:"",
     cantidad:"",
     precio:"", 
-  })
+  });
     
              
-      const categorias = ["Aperitivo","Agua y refrescos","Lacteos","Frutas y verduras","Huevos y mantequilla","Aceite, especias y salsas","Marisco y pescado","Carne","Congelados"];
+      const categorias = [
+        "Aperitivo",
+        "Agua y refrescos",
+        "Lacteos",
+        "Frutas y verduras",
+        "Huevos y mantequilla",
+        "Aceite, especias y salsas",
+        "Marisco y pescado",
+        "Carne",
+        "Congelados"
+      ];
     
       const handleChange = (e) => {
         const { name, value } = e.target;
         setFormulario({ ...formulario, [name]: value });
         };
+
+        useEffect(() => {
+          if (id) {
+            const fetchProduct = async () => {
+              const { data, error } = await supabase
+                .from("products")
+                .select("*")
+                .eq("id", id)
+                .single();
+      
+              if (error) {
+                console.error("Error al cargar producto:", error);
+              } else {
+                setFormulario({
+                  nombre: data.name || "",
+                  descripcion: data.description || "",
+                  categoria: data.category || "",
+                  cantidad: data.stock?.toString() || "",
+                  precio: data.price?.toString() || "",
+                });
+              }
+            };
+      
+            fetchProduct();
+          }
+        }, [id]);
+      
     
       const handleSubmit = async (e) => {e.preventDefault();
   
@@ -30,9 +71,22 @@ function FormComponent(){
           price: parseFloat(formulario.precio)
         };
   
-        console.log('Producto a insertar:', product);
+        if (id) {
+          const { error } = await supabase
+            .from("products")
+            .update(product)
+            .eq("id", id);
     
-        const { data, error } = await supabase
+          if (error) {
+            console.error("Error al actualizar producto:", error);
+            alert("Error al actualizar el producto");
+          } else {
+            alert("Producto actualizado con éxito");
+            navigate("/inventory");
+          }
+        } else {
+    
+        const { error } = await supabase
           .from('products')
           .insert([product]);
     
@@ -49,8 +103,7 @@ function FormComponent(){
             precio: "",
           });
         }
-  
-      
+      }
     };
     
       return (
@@ -87,7 +140,9 @@ function FormComponent(){
             <input className="input" type="number" name="precio" step="0.01" value={formulario.precio} onChange={handleChange}/>
           </label>
     
-          <button type="submit" className="button">Guardar producto</button>    
+          <button type="submit" className="button">
+            {id ? "Actualizar producto" : "Guardar producto"}
+            </button>    
          
         </form>
       );
