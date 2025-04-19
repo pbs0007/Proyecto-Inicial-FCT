@@ -6,7 +6,6 @@ import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import ControlPanelPage from "./pages/ControlPanelPage";
 import InventoryPage from "./pages/InventoryPage";
-import ProductForm from "./pages/ProductFormPage";
 import Movememets from "./pages/MovementsPage";
 import { SnackbarProvider } from "notistack";
 import NotificationComponent from "./components/NotificationComponent";
@@ -50,6 +49,7 @@ function App() {
         <Route path="/control-panel" element={<ControlPanelPage />} />
         <Route path="/inventory" element={<InventoryPage />} />
         <Route path="/product-form" element={<ProductFormPage />} />
+        <Route path="/product-form/:id" element={<ProductFormPage />} />
         <Route path="/movements" element={<Movememets />} />
       </Routes>
     </SnackbarProvider>

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabase/supabaseClient";
 import CategoryFilter from "./CategoryFilterComponent";
 import "./ProductTableComponent.css";
 
 function ProductTableComponent() {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
 
   useEffect(() => {
@@ -77,7 +79,7 @@ function ProductTableComponent() {
                 <div className="btns">
                   <button
                     className="btn"
-                    onClick={() => alert(`Modificar ${row.id}`)}
+                    onClick={() => navigate(`/product-form/${row.id}`)}
                   >
                     Modificar
                   </button>
